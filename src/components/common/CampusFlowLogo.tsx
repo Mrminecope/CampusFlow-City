@@ -31,23 +31,26 @@ export const CampusFlowLogo: React.FC<CampusFlowLogoProps> = ({
     lg: 'text-xs tracking-normal font-medium',
   };
 
+  // Vite's BASE_URL contains the GitHub Pages repository prefix in production.
+  const assetUrl = (file: string) => `${import.meta.env.BASE_URL}${file}`.replace(/([^:]\/)\/{2,}/g, '$1');
+
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* Supplied CampusFlow Logo Icon Asset */}
       <div className={`relative shrink-0 ${iconSizes[size]} flex items-center justify-center overflow-hidden rounded-md`}>
         <img
-          src="/CampusFlow-icon.png"
+          src={assetUrl('CampusFlow-icon.png')}
           alt="CampusFlow Logo"
           className="w-full h-full object-contain"
           referrerPolicy="no-referrer"
           onError={(e) => {
-            // Fallback to jpeg asset if needed
-            (e.currentTarget as HTMLImageElement).src = '/CampusFlow.logo.jpeg';
+            const image = e.currentTarget as HTMLImageElement;
+            if (!image.src.endsWith('CampusFlow.logo.jpeg')) {
+              image.src = assetUrl('CampusFlow.logo.jpeg');
+            }
           }}
         />
       </div>
 
-      {/* Brand Typography matching CampusFlow design asset */}
       <div className="flex flex-col text-left">
         <span
           className={`font-black tracking-tight font-sans ${titleSizes[size]} ${
@@ -69,4 +72,3 @@ export const CampusFlowLogo: React.FC<CampusFlowLogoProps> = ({
     </div>
   );
 };
-
