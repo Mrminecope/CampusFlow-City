@@ -2,7 +2,8 @@ name: Deploy CampusFlow to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -24,14 +25,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 24
 
       - name: Install dependencies
         run: npm install
 
       - name: Build frontend
-        run: npm run build
+        run: npx vite build
         env:
           NODE_ENV: production
 
