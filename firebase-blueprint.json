@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Student profile metadata and academic benchmarks",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth user identifier" },
+        "name": { "type": "string", "description": "Full name of the student" },
+        "email": { "type": "string", "description": "Google verified email address" },
+        "role": { "type": "string", "description": "Platform role" },
+        "headline": { "type": "string", "description": "Academic pursuit statement" },
+        "currentSchool": { "type": "string", "description": "Current school or college" },
+        "graduationYear": { "type": "number", "description": "Anticipated graduation year" },
+        "gpa": { "type": "number", "description": "Cumulative GPA score" },
+        "targetMajor": { "type": "string", "description": "Intended college major" },
+        "targetDegree": { "type": "string", "description": "Target higher education qualification" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last sync" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "A higher education university application tracking record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique application record ID" },
+        "userId": { "type": "string", "description": "Owner student UID" },
+        "universityId": { "type": "string", "description": "University identifier" },
+        "universityName": { "type": "string", "description": "University legal name" },
+        "courseTitle": { "type": "string", "description": "Program title" },
+        "degreeLevel": { "type": "string", "description": "Degree qualification level" },
+        "status": { "type": "string", "description": "Current application stage" },
+        "progress": { "type": "number", "description": "Completion percentage" },
+        "deadline": { "type": "string", "description": "Application deadline" },
+        "updatedAt": { "type": "string", "description": "ISO update timestamp" }
+      },
+      "required": ["id", "userId", "universityName", "status"]
+    },
+    "StudioDraft": {
+      "title": "StudioDraft",
+      "description": "Application Studio essay, statement of purpose, or resume draft",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Draft unique identifier" },
+        "userId": { "type": "string", "description": "Owner student UID" },
+        "docType": { "type": "string", "description": "Type of admissions narrative" },
+        "title": { "type": "string", "description": "Draft document title" },
+        "content": { "type": "string", "description": "Markdown body content" },
+        "wordCount": { "type": "number", "description": "Draft length in words" },
+        "status": { "type": "string", "description": "Draft or exported status" },
+        "updatedAt": { "type": "string", "description": "Timestamp of revision" }
+      },
+      "required": ["id", "userId", "docType", "title", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Primary student account and preferences"
+    },
+    "/users/{userId}/applications/{applicationId}": {
+      "schema": "Application",
+      "description": "University applications and checklist status for the student"
+    },
+    "/users/{userId}/studio_drafts/{draftId}": {
+      "schema": "StudioDraft",
+      "description": "Admissions essays and personal statements authored by the student"
+    }
+  }
+}

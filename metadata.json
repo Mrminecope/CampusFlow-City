@@ -1,0 +1,10 @@
+{
+  "name": "CampusFlow City",
+  "description": "One Education Network. Every Student. Comprehensive higher education platform for university admissions, courses, scholarships, applications, education passport, and pathway planning.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

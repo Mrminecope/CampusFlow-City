@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Test collection for initial connectivity ping
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // User Profile Document & Private Subcollections
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create, update: if isOwner(userId) && isValidId(userId);
+      allow delete: if isOwner(userId);
+
+      // Student University Applications
+      match /applications/{applicationId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(applicationId);
+        allow delete: if isOwner(userId);
+      }
+
+      // Student Studio Drafts (SOP, Essays, Resumes)
+      match /studio_drafts/{draftId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(draftId);
+        allow delete: if isOwner(userId);
+      }
+
+      // Student Saved Places & Journey
+      match /saved_places/{savedId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(savedId);
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // Public Curated Education Reference Collections (Read-Only)
+    match /universities/{universityId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /scholarships/{scholarshipId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /exams/{examId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /opportunities/{oppId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /education_city/{placeId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
+
