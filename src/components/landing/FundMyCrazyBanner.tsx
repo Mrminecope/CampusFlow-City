@@ -1,12 +1,11 @@
 import React from 'react';
-import { 
-  Sparkles, 
-  Award, 
-  ArrowRight, 
-  TrendingUp, 
-  Compass, 
-  HeartHandshake,
-  CheckCircle2
+import {
+  Sparkles,
+  ArrowRight,
+  GraduationCap,
+  Lightbulb,
+  Map,
+  CheckCircle2,
 } from 'lucide-react';
 import { NavigationTab } from '../../types';
 
@@ -20,85 +19,75 @@ export const FundMyCrazyBanner: React.FC<FundMyCrazyBannerProps> = ({
   onOpenAuth,
 }) => {
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-slate-50 border-b border-amber-200/60 relative overflow-hidden">
-      {/* Decorative Blur */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden border-b border-amber-200/60 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-slate-50 py-16 md:py-20">
+      <div className="pointer-events-none absolute left-0 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-amber-400/15 blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-amber-300/80 shadow-md p-6 sm:p-10 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-amber-100 pb-5">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-xl shadow-xs">
-                <Sparkles className="w-6 h-6" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-amber-300/70 bg-white p-6 shadow-md sm:p-10">
+          <div className="flex flex-col gap-5 border-b border-amber-100 pb-6 md:flex-row md:items-start md:justify-between">
+            <div className="flex items-start gap-3">
+              <div className="rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 p-3 text-white shadow-sm">
+                <Sparkles className="h-6 w-6" />
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-black uppercase tracking-wider text-amber-800">
-                    The FundMyCrazy Initiative
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-black uppercase tracking-[0.16em] text-amber-800">
+                    Fund My Crazy 2.0
                   </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
-                    Partner Platform
+                  <span className="rounded border border-amber-300 bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-900">
+                    Our Education
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">
-                  Audacious Dreams Require Real Capital
+                <h3 className="mt-1 text-xl font-black text-slate-900 sm:text-2xl">
+                  Reimagining the city around a student’s education journey.
                 </h3>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+                  CampusFlow City turns a fragmented education ecosystem into one connected student command center — helping people discover paths, understand fit, manage applications and act on what matters next.
+                </p>
               </div>
             </div>
-
-            <div className="text-left sm:text-right">
-              <div className="text-2xl font-black text-amber-600">$180,000,000+</div>
-              <div className="text-[11px] font-semibold text-slate-500">In Active Matched Awards</div>
+            <div className="shrink-0 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 md:text-right">
+              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-amber-700">The challenge</div>
+              <div className="mt-1 text-lg font-black text-slate-900">Reimagine education</div>
+              <div className="mt-1 text-[11px] font-medium text-slate-500">Built with Gemini</div>
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-            CampusFlow City Phase 2 was built for FundMyCrazy to dismantle the financial walls blocking extraordinary scholars worldwide. We believe students with the boldest, craziest ideas shouldn't be held back by traditional tuition barriers.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200/70 space-y-1">
-              <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-600" />
-                Global STEM Fellowships
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-900">
+                <Map className="h-4 w-4 text-blue-700" /> One education map
               </div>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Full-tuition grants for builders, coders, and researchers.
-              </p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">Bring universities, courses, scholarships, exams and opportunities into one connected view.</p>
             </div>
-            <div className="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200/70 space-y-1">
-              <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-600" />
-                Non-Traditional Founders
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-900">
+                <Lightbulb className="h-4 w-4 text-amber-600" /> Gemini-guided decisions
               </div>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Funding for students pursuing disruptive thesis projects and ventures.
-              </p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">Turn a student’s profile, goals, deadlines and documents into clear next actions.</p>
             </div>
-            <div className="p-3.5 bg-amber-50/50 rounded-xl border border-amber-200/70 space-y-1">
-              <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-600" />
-                First-Generation Scholars
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-900">
+                <GraduationCap className="h-4 w-4 text-emerald-700" /> From idea to outcome
               </div>
-              <p className="text-[11px] text-slate-600 leading-snug">
-                Living stipend assistance and comprehensive travel relocation aid.
-              </p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">Make the journey measurable from exploration and fit through application and follow-through.</p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-            <span className="text-xs text-slate-500 font-medium">
-              Are you an applicant with a moonshot ambition? Match your profile today.
-            </span>
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <button
-                type="button"
-                onClick={() => onEnterApp('scholarships')}
-                className="w-full sm:w-auto px-5 py-2.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center gap-1.5"
-              >
-                <Award className="w-4 h-4" />
-                <span>Search Matched Scholarships</span>
+          <div className="mt-6 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-5 sm:flex-row sm:items-center">
+            <div className="flex items-start gap-2 text-xs font-medium text-slate-500">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+              <span>Fund My Crazy 2026 accepts one city element, a written idea and a Gemini-generated visual. A working prototype is not required.</span>
+            </div>
+            <div className="flex w-full gap-2 sm:w-auto">
+              <button type="button" onClick={() => onEnterApp('city')} className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:border-slate-400 sm:w-auto">
+                Explore Education City
+                <ArrowRight className="h-3.5 w-3.5" />
               </button>
+              <a href="https://enter.fundmycrazy.com/" target="_blank" rel="noreferrer" className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-bold text-white transition hover:bg-slate-800 sm:w-auto">
+                Submit to Fund My Crazy
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
             </div>
           </div>
         </div>
