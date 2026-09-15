@@ -40,7 +40,7 @@ function aistudioMediaPlugin(): Plugin {
 }
 
 export default defineConfig(() => ({
-  base: '/CampusFlow-City/',
+  base: process.env.GITHUB_ACTIONS === 'true' ? '/CampusFlow-City/' : './',
   plugins: [react(), tailwindcss(), aistudioMediaPlugin()],
   resolve: {
     alias: {
