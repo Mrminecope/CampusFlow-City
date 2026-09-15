@@ -1,6 +1,6 @@
 {
   "name": "CampusFlow City",
-  "description": "One Education Network. Every Student. Comprehensive higher education platform for university admissions, courses, scholarships, applications, education passport, and pathway planning.",
+  "description": "CampusFlow City for FundMyCrazy. One Education Network. Every Student. Comprehensive global education platform for university admissions, verified Education Passport, scholarships, applications, and Gemini-powered pathway planning.",
   "requestFramePermissions": [
     "geolocation"
   ],

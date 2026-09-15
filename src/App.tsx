@@ -70,9 +70,10 @@ import { ApplicationStudioView } from './components/views/ApplicationStudioView'
 import { CompareView } from './components/views/CompareView';
 import { ProfileView } from './components/views/ProfileView';
 import { SettingsView } from './components/views/SettingsView';
+import { LandingView } from './components/landing/LandingView';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<NavigationTab>('dashboard');
+  const [activeTab, setActiveTab] = useState<NavigationTab>('landing');
   const [user, setUser] = useState<UserProfile>(initialUser);
   const [passport, setPassport] = useState<EducationPassport>(initialPassport);
   const [universities, setUniversities] = useState<University[]>(initialUniversities);
@@ -98,6 +99,7 @@ export default function App() {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
         setIsFirebaseConnected(true);
+        setActiveTab((current) => (current === 'landing' ? 'dashboard' : current));
         try {
           // Try fetching existing Firestore profile
           const existing = await getUserProfileFromFirestore(fbUser.uid);
@@ -332,7 +334,31 @@ export default function App() {
   const handleLogout = async () => {
     await logoutUser();
     setUser(initialUser);
+    setActiveTab('landing');
   };
+
+  // Phase 2: CampusFlow City Landing Experience for FundMyCrazy
+  if (activeTab === 'landing') {
+    return (
+      <div className="min-h-screen bg-white text-slate-900 font-sans">
+        <LandingView
+          user={user}
+          onEnterApp={(tab) => setActiveTab(tab || 'dashboard')}
+          onOpenAuth={() => setIsAuthModalOpen(true)}
+          onConnectGoogle={handleConnectGoogle}
+        />
+        {/* Authentication Modal */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+          onAuthSuccess={(newUserData) => {
+            setUser((prev) => ({ ...prev, ...newUserData }));
+            setActiveTab('dashboard');
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans antialiased">

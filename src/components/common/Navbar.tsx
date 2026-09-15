@@ -214,6 +214,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
+          {/* Public Landing Page Button */}
+          <button
+            id="navbar-landing-toggle-btn"
+            type="button"
+            onClick={() => setActiveTab('landing')}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-100/90 hover:bg-slate-200/80 rounded-lg transition-colors border border-slate-200"
+            title="View Public Landing Page"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>Landing Page</span>
+          </button>
+
           {/* Notifications button with dropdown */}
           <div className="relative">
             <button
@@ -302,6 +314,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
 
                 <div className="py-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab('landing');
+                      setShowUserMenu(false);
+                    }}
+                    className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-blue-700 hover:bg-blue-50 font-semibold"
+                  >
+                    <Sparkles className="w-4 h-4 text-amber-500" />
+                    <span>Public Landing Page</span>
+                  </button>
                   <button
                     type="button"
                     onClick={() => {

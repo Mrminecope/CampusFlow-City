@@ -60,6 +60,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   const bottomNavItems = [
+    { id: 'landing' as NavigationTab, label: '✦ Public Landing Page', icon: Sparkles },
     { id: 'profile' as NavigationTab, label: 'Profile', icon: User },
     { id: 'settings' as NavigationTab, label: 'Settings', icon: Settings },
   ];

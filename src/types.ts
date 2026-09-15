@@ -1,4 +1,5 @@
 export type NavigationTab =
+  | 'landing'
   | 'dashboard'
   | 'passport'
   | 'universities'
